@@ -9,17 +9,15 @@
                 <div class="col-lg-8">
                     <div class="mb-5">
                         <h6 class="text-primary mb-3"></h6>
-                        <h1 class="mb-5">{{course.title}}</h1>
-                        <img class="img-fluid rounded w-100 mb-4" src="{{ course.image.url }}" alt="Image">
+                        <img class="img-fluid rounded w-100 mb-4" src="{{ teacher.image.url }}" alt="Image">
                         <div class="card text-center">
                           <div class="card-header">
-                            {{ course.mentor }}
                           </div>
                           <div class="card-body">
-                            <h5 class="card-title">Description</h5>
-                            <p class="card-text">{{course.description}}</p>
-                            <a href="{% url 'course-delete' course.id %}" class="btn btn-primary">Delete</a>
-                            <a href="{% url 'course-update' course.pk %}" class="btn btn-primary">Update</a>
+                            <h5 class="card-title">Teacher name</h5>
+                            <p class="card-text">{{teacher.full_name}}</p>
+                            <a href="{% url 'teacher-delete' teacher.id %}" class="btn btn-primary">Delete</a>
+                            <a href="{% url 'teacher-update' teacher.pk %}" class="btn btn-primary">Update</a>
 
                           </div>
                           <div class="card-footer text-body-secondary">

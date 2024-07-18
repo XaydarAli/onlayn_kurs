@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator,MaxValueValidator
 
 class Teacher(models.Model):
     full_name = models.CharField(max_length=200)
@@ -21,7 +21,7 @@ class Course(models.Model):
     mentor = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='course/course/', null=True)
     price = models.FloatField(default=0)
-    rating = models.FloatField(default=0)
+    rating = models.FloatField(default=0,validators=[MinValueValidator(0),MaxValueValidator(5)])
     active_students = models.PositiveIntegerField(default=0)
 
     def __str__(self):

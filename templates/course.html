@@ -59,7 +59,7 @@
                                     <small class="m-0"><i class="fa fa-users text-primary mr-2">{{course.active_students}} Students</i></small>
                                     <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
                                 </div>
-                                <a class="h5" href="{% url 'course-detail' course.id %}">{{ course.title }}</a>
+                                <a class="h5" href="{% url 'course-detail' course.pk %}">{{ course.title }}</a>
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{course.rating}} <small>()</small></h6>
