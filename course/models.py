@@ -32,7 +32,7 @@ class Speciality(models.Model):
     slug = models.SlugField(max_length=250)
     image = models.ImageField(upload_to='course/speciality/')
     course = models.ManyToManyField(Course)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField()
 
     def __str__(self):
         return self.title

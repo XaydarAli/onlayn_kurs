@@ -2,36 +2,29 @@
 {% load static %}
 {% block content %}
 
-
-
     <!-- Detail Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="mb-5">
-                        <h6 class="text-primary mb-3">{{ blog.publish.date }}</h6>
-                        <h1 class="mb-5">{{blog.title}}</h1>
-                        <img class="img-fluid rounded w-100 mb-4" src="{{ blog.image.url }}" alt="Image">
-                        <p>{{blog.content}}</p>
-                    </div>
+                        <h6 class="text-primary mb-3"></h6>
+                        <img class="img-fluid rounded w-100 mb-4" src="{{ speciality.image.url }}" alt="Image">
+                        <div class="card text-center">
+                          <div class="card-header">
+                          </div>
+                          <div class="card-body">
+                            <p class="card-text">Speciality: {{speciality.title}}</p>
+                            <p class="card-text">Speciality created time: {{speciality.created}}</p>
+                            <a href="{% url 'speciality-delete' speciality.id %}" class="btn btn-primary">Delete</a>
+                            <a href="{% url 'speciality-update' speciality.id %}" class="btn btn-primary">Update</a>
 
-                    <!-- Comment List -->
-                    <div class="mb-5">
-                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">{{blog.comment.count}}</h3>
-                        {% for comment in blog.comment.all %}
-                            <div class="media mb-4">
-                                <div class="media-body">
-                                    <h6>{{comment.user.get_full_name}} <small><i>{{comment.publish.date}}</i></small></h6>
-                                    <p>{{comment.text}}</p>
-                                    <button class="btn btn-sm btn-secondary">Reply</button>
-
-                                </div>
-                            </div>
-                        {% endfor %}
+                          </div>
+                          <div class="card-footer text-body-secondary">
+                            2 days ago
+                          </div>
+                        </div>
                     </div>
-                    <a href="{% url 'blog-delete' blog.id %}" class="btn btn-primary">Delete</a>
-                    <a href="{% url 'blog-update' blog.id %}" class="btn btn-primary">Update</a>
 
 
                     <!-- Comment Form -->
@@ -40,7 +33,6 @@
                         <form>
                             <div class="form-group">
                                 <label for="name">Name *</label>
-
                                 <input type="text" class="form-control border-0" id="name">
                             </div>
                             <div class="form-group">

@@ -2,23 +2,21 @@
 {% load static %}
 {% block content %}
   <div class="row justify-content-center">
-      <h1>Teacher Update</h1>
+      <h1>Course Update</h1>
                 <div class="col-lg-8">
                     <div class="contact-form bg-secondary rounded p-5">
                         <div id="success"></div>
                         <form  method="POST">
                             {% csrf_token %}
                             <div class="control-group">
-                                <input type="text" class="form-control border-0 p-4" name="full_name" value="{{teacher.full_name}}" placeholder="full_name" required="required" data-validation-required-message="Please enter your name" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                             <div class="control-group">
-                                <input type="text" class="form-control border-0 p-4" name="position" value="{{teacher.position}}" placeholder="position" required="required" data-validation-required-message="Please enter your name" />
+                                <input type="text" class="form-control border-0 p-4" name="title" value="{{speciality.title}}" placeholder="Title" required="required" data-validation-required-message="Please enter your name" />
                                 <p class="help-block text-danger"></p>
                             </div>
 
-
-
+                            <div class="control-group">
+                                <input type="date" class="form-control border-0 p-4" name="created" value="{{speciality.created}}" placeholder="Created time" required="required" data-validation-required-message="Please enter a subject" />
+                                <p class="help-block text-danger"></p>
+                            </div>
 
                             <div class="text-center">
                                 <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Update</button>

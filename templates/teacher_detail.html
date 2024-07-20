@@ -14,10 +14,10 @@
                           <div class="card-header">
                           </div>
                           <div class="card-body">
-                            <h5 class="card-title">Teacher name</h5>
-                            <p class="card-text">{{teacher.full_name}}</p>
+                            <p class="card-text">Teacher ning nomi: {{teacher.full_name}}</p>
+                            <p class="card-text">Teacher ning lavozimi: {{teacher.position}}</p>
                             <a href="{% url 'teacher-delete' teacher.id %}" class="btn btn-primary">Delete</a>
-                            <a href="{% url 'teacher-update' teacher.pk %}" class="btn btn-primary">Update</a>
+                            <a href="{% url 'teacher-update' teacher.id %}" class="btn btn-primary">Update</a>
 
                           </div>
                           <div class="card-footer text-body-secondary">

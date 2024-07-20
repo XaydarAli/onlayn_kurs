@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Course, Speciality,Teacher
-from .forms import CourseForm,CourseUpdateForm,TeacherForm,TeacherUpdateForm
-from django.http import HttpResponse
+from .forms import CourseForm,CourseUpdateForm,TeacherForm,TeacherUpdateForm,SpecialityUpdateForm,SpecialityForm
 
 def courses_list_view(request):
     courses = Course.objects.all()
@@ -55,8 +54,8 @@ def teachers_list_view(request):
     return render(request, 'teacher.html',{"teachers":teachers})
 
 
-def teacher_detail_view(request, pk):
-    teacher = Teacher.objects.get(pk=pk)
+def teacher_detail_view(request, id):
+    teacher = Teacher.objects.get(id=id)
     return render(request, 'teacher_detail.html', {"teacher": teacher})
 
 
@@ -72,16 +71,16 @@ def teacher_create_view(request):
     form = TeacherForm()
     return render(request, 'teacher_create.html', {'form': form})
 
-def teacher_update_view(request,pk):
-    teacher=get_object_or_404(Teacher,pk=pk)
+def teacher_update_view(request,id):
+    teacher=get_object_or_404(Teacher,id=id)
     if request.method == "POST":
         form=TeacherUpdateForm(request.POST,instance=teacher)
         if form.is_valid():
             form.save()
-            return redirect('teacher-detail',pk=teacher.pk)
+            return redirect('teacher-detail',id=teacher.id)
         else:
             form=TeacherUpdateForm(instance=teacher)
-    teacher = Teacher.objects.get(pk=pk)
+    teacher = Teacher.objects.get(id=id)
     return render(request,'teacher_update.html',{"teacher":teacher})
 def teacher_delete_view(request, id):
     teacher = Teacher.objects.get(id=id)
@@ -91,6 +90,49 @@ def teacher_delete_view(request, id):
 
 
 
+
+#**********************************************************************************************************************************8
+def speciality_list_view(request):
+    specialitys = Speciality.objects.all()
+    context = {
+        "specialitys": specialitys,
+    }
+    return render(request, 'speciality.html', context)
+
+
+def speciality_detail_view(request, id):
+    speciality = Speciality.objects.get(id=id)
+    return render(request, 'speciality_detail.html', {"speciality": speciality})
+
+
+def speciality_create_view(request):
+    if request.method == "POST":
+        form = SpecialityForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('speciality-list')
+        else:
+            return render(request, 'speciality_create.html', {'form': form, "message_error": "there is a mistake somewhere!"})
+
+    form = SpecialityForm()
+    return render(request, 'speciality_create.html', {'form': form})
+
+def speciality_update_view(request,id):
+    speciality=get_object_or_404(Speciality,id=id)
+    if request.method == "POST":
+        form=SpecialityUpdateForm(request.POST,instance=speciality)
+        if form.is_valid():
+            form.save()
+            return redirect('speciality-detail',id=speciality.id)
+        else:
+            form=SpecialityUpdateForm(instance=speciality)
+    speciality = Speciality.objects.get(id=id)
+    return render(request,'speciality_update.html',{"speciality":speciality})
+def speciality_delete_view(request, id):
+    speciality = Speciality.objects.get(id=id)
+    speciality.delete()
+    return redirect('speciality-list')
+    return render(request, 'speciality_create.html', {'form': form})
 
 
 
